@@ -1,4 +1,4 @@
-import json
+import json, sys
 
 with open("distances.json", "r") as f:
     distances = json.load(f)
@@ -21,7 +21,7 @@ def test(func):
     visited = set(route)
     for pub in names:
         if pub not in visited:
-            print("ERR: Did not visit {}".visit(pub))
+            print("ERR: Did not visit {}".format(pub))
             return
 
     # Check time
@@ -34,3 +34,12 @@ def test(func):
         speed / 1.05 # gets 5% slower at each pub
         last = pub
     print(t)
+
+def read_from_stdin(distances, names, drunk_factor):
+    lines = []
+    for line in sys.stdin:
+        lines.append(line.strip())
+    return lines
+
+if __name__ == "__main__":
+    test(read_from_stdin)
