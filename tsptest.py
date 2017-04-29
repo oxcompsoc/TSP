@@ -31,7 +31,7 @@ def test(func):
     for pub in route[1:]:
         d = distances[last][pub]
         t += d / speed
-        speed / 1.05 # gets 5% slower at each pub
+        speed /= 1.05 # gets 5% slower at each pub
         last = pub
     print(t)
 
